@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Section } from './components/Section/Section';
 import { api } from './constants/api';
 import { Main } from './containers/Main/Main';
 export function AppRoutes() {
@@ -11,13 +12,7 @@ export function AppRoutes() {
 							<Route
 								key={section.heading}
 								path={section.heading}
-								element={
-									<>
-										<h1>{section.heading}</h1>
-										<br />
-										<h3>{section.description}</h3>
-									</>
-								}
+								element={<Section {...section} />}
 							/>
 						);
 					})}
