@@ -16,4 +16,4 @@ type APISection = {
 	services: APIService[];
 };
 
-type APIJson = APISection[];
+export type APIJson = APISection[];
