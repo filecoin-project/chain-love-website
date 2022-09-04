@@ -1,60 +1,6 @@
+import { APIJson } from '../types';
+
 export const api: APIJson = [
-	{
-		heading: 'Others',
-		description: '',
-		services: [
-			{
-				title: 'Closing',
-				description: '',
-				permissions: 'read',
-				method: { request: [], response: {} },
-			},
-			{
-				title: 'Discover',
-				description: '',
-				permissions: 'read',
-				method: {
-					request: [],
-					response: {
-						info: {
-							title: 'Lotus RPC API',
-							version: '1.2.1/generated=2020-11-22T08:22:42-06:00',
-						},
-						methods: [],
-						openrpc: '1.2.6',
-					},
-				},
-			},
-			{
-				title: 'Session',
-				description: '',
-				permissions: 'read',
-				method: {
-					request: [],
-					response: '07070707-0707-0707-0707-070707070707',
-				},
-			},
-			{
-				title: 'Shutdown',
-				description: '',
-				permissions: 'admin',
-				method: { request: [], response: {} },
-			},
-			{
-				title: 'Version',
-				description: '',
-				permissions: 'read',
-				method: {
-					request: [],
-					response: {
-						Version: 'string value',
-						APIVersion: 131840,
-						BlockDelay: 42,
-					},
-				},
-			},
-		],
-	},
 	{
 		heading: 'Auth',
 		description: '',
@@ -5827,6 +5773,62 @@ export const api: APIJson = [
 						},
 					],
 					response: true,
+				},
+			},
+		],
+	},
+	{
+		heading: 'Others',
+		description: '',
+		services: [
+			{
+				title: 'Closing',
+				description: '',
+				permissions: 'read',
+				method: { request: [], response: {} },
+			},
+			{
+				title: 'Discover',
+				description: '',
+				permissions: 'read',
+				method: {
+					request: [],
+					response: {
+						info: {
+							title: 'Lotus RPC API',
+							version: '1.2.1/generated=2020-11-22T08:22:42-06:00',
+						},
+						methods: [],
+						openrpc: '1.2.6',
+					},
+				},
+			},
+			{
+				title: 'Session',
+				description: '',
+				permissions: 'read',
+				method: {
+					request: [],
+					response: '07070707-0707-0707-0707-070707070707',
+				},
+			},
+			{
+				title: 'Shutdown',
+				description: '',
+				permissions: 'admin',
+				method: { request: [], response: {} },
+			},
+			{
+				title: 'Version',
+				description: '',
+				permissions: 'read',
+				method: {
+					request: [],
+					response: {
+						Version: 'string value',
+						APIVersion: 131840,
+						BlockDelay: 42,
+					},
 				},
 			},
 		],
