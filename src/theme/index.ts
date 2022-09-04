@@ -8,6 +8,12 @@ const colors = {
 	accent: '#e90984',
 	purple: '#bb28fa',
 	secondary: '#9137ff',
+	font: {
+		light: 'slategray',
+		dark: 'black',
+		med: '#363636',
+		default: 'black',
+	},
 };
 
 const fonts = {

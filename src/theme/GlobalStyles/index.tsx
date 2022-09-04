@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { AppTheme } from "../";
+import { createGlobalStyle } from 'styled-components';
+import { AppTheme } from '../';
 import EuropaWoff from '../fonts/europa-regular.woff';
 import EuropaWoff2 from '../fonts/europa-regular.woff2';
 
@@ -43,4 +43,8 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     outline: inherit;
   }
+
+span{
+  font-size:16px;
+}
 `;
