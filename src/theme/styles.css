@@ -1,24 +1,29 @@
 @font-face {
-  font-family: "DIN";
-  src: url("https://drive.google.com/file/d/1aVJxEG6WQlEEuxFHdN4V7Xbwd1F2U-oZ/view?usp=sharing") format("woff2"),
-    url("https://drive.google.com/file/d/17qXtrTRlP7wIl5mz9FSJTxqmOrb05Fb_/view?usp=sharing") format("woff");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'DIN';
+	src: url('https://drive.google.com/file/d/1aVJxEG6WQlEEuxFHdN4V7Xbwd1F2U-oZ/view?usp=sharing')
+			format('woff2'),
+		url('https://drive.google.com/file/d/17qXtrTRlP7wIl5mz9FSJTxqmOrb05Fb_/view?usp=sharing')
+			format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "DIN Bold";
-  src: url("https://drive.google.com/file/d/1i-YjH-bjNdDI5E6MxbExsSU04pqJXHqC/view?usp=sharing") format("woff2"),
-    url("https://drive.google.com/file/d/1hhnf3im0ZFMbRYZadUlBs054hMmfcHln/view?usp=sharing") format("woff");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'DIN Bold';
+	src: url('https://drive.google.com/file/d/1i-YjH-bjNdDI5E6MxbExsSU04pqJXHqC/view?usp=sharing')
+			format('woff2'),
+		url('https://drive.google.com/file/d/1hhnf3im0ZFMbRYZadUlBs054hMmfcHln/view?usp=sharing')
+			format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Calibri";
-  src:
-    url("https://drive.google.com/file/d/17R1PCLi_gq6FY2WCULdhFT-Gc-EsXoQl/view?usp=sharing") format("woff2"),
-    url("https://drive.google.com/file/d/1EAwmjwUGSR1vKQKkChtiy87R1KvhBcg6/view?usp=sharing") format("woff");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Calibri';
+	src: url('https://drive.google.com/file/d/17R1PCLi_gq6FY2WCULdhFT-Gc-EsXoQl/view?usp=sharing')
+			format('woff2'),
+		url('https://drive.google.com/file/d/1EAwmjwUGSR1vKQKkChtiy87R1KvhBcg6/view?usp=sharing')
+			format('woff');
+	font-weight: normal;
+	font-style: normal;
 }

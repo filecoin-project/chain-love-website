@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
         font-style: normal;
     }
 
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -31,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     background: ${AppTheme.colors.white};
-    font-family: ${AppTheme.fonts.europa};
+    font-family: ${AppTheme.fonts.rubik};
   }
 
   button {
@@ -45,6 +46,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 span{
-  font-size:16px;
+  font-size:1.1rem;
+  font-family:'Rubik',sans-serif;
 }
+
+/* .hljs{
+  background:#1e1e1e !important
+} */
+
 `;

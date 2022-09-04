@@ -1,5 +1,6 @@
 import { APISection } from '../../types';
 import { HorizontalLine } from '../common/HorizontalLine/HorizontalLine';
+import { Service } from '../Service/Service';
 import {
 	SectionContainer,
 	ServiceContainer,
@@ -10,16 +11,12 @@ import {
 export function Section({ heading, description, services }: APISection) {
 	return (
 		<SectionContainer>
-			<Heading>{heading}</Heading>
+			<Heading type="h3">{heading}</Heading>
 			<HorizontalLine />
 			<Description>{description}</Description>
 			<ServiceContainer>
 				{services.map((service) => (
-					<>
-						<h2>{service.title}</h2>
-						<HorizontalLine opacity={1} />
-						<br />
-					</>
+					<Service {...service} key={service.title} />
 				))}
 			</ServiceContainer>
 		</SectionContainer>

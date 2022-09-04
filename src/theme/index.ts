@@ -18,6 +18,8 @@ const colors = {
 
 const fonts = {
 	europa: "'Europa', sans-serif",
+	code: '"Fira Mono",monospace',
+	rubik: "'Rubik',sans-serif",
 };
 
 const breakPoints = {

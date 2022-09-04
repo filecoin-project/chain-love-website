@@ -1,4 +1,5 @@
 export type APIMethod = {
+	name?: string;
 	request: any[];
 	response: any; //TO DO Type response
 };
