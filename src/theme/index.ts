@@ -1,9 +1,6 @@
 const colors = {
 	white: '#FFF',
 	black: '#000',
-	lightGray: '#f9f9f9',
-	gray: '#D9D9D9',
-	darkGray: '#909090',
 	primary: '#ea4cce',
 	accent: '#e90984',
 	purple: '#bb28fa',
@@ -20,6 +17,7 @@ const fonts = {
 	europa: "'Europa', sans-serif",
 	code: '"Fira Mono",monospace',
 	rubik: "'Rubik',sans-serif",
+	brandonGrotesque: "'Brandon-Grotesque', sans-serif"
 };
 
 const breakPoints = {
@@ -36,3 +34,5 @@ export const AppTheme = {
 	fonts,
 	breakPoints,
 };
+
+export type ThemeType = typeof AppTheme;

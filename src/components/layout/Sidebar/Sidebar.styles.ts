@@ -8,10 +8,10 @@ export const Container = styled.div`
 	overflow-y: auto;
 	max-width: 270px;
 	background-color: ${({
-		theme: {
-			colors: { lightGray },
-		},
-	}) => lightGray};
+	theme: {
+		colors: { background: { sidebar } },
+	},
+}) => sidebar};
 `;
 
 export const SectionTitleContainer = styled.div`
@@ -22,14 +22,14 @@ export const SectionTitleContainer = styled.div`
 	gap: 8px;
 `;
 
-export const SectionTitle: any = styled(Title).attrs({ as: Link })<{
+export const SectionTitle: any = styled(Title).attrs({ as: Link }) <{
 	active: boolean;
 }>`
 	font-size: 22px;
 	line-height: 30px;
 	cursor: ${({ active }) => (active ? 'default' : 'pointer')};
-	color: ${({ theme: { colors }, active }) =>
-		active ? colors.primary : 'black'};
+	color: ${({ theme: { colors: { primary, font } }, active }) =>
+		active ? primary : font};
 	text-decoration: none;
 	&: {
 		color: ${({ theme: { colors } }) => colors.primary};

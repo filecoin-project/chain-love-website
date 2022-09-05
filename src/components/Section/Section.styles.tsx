@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Span } from '../common/Typography/Span/Span';
 import { Title } from '../common/Typography/Title/Title';
 
 export const SectionContainer = styled.div`
@@ -13,7 +14,7 @@ export const SectionContainer = styled.div`
 `;
 
 export const Heading = styled(Title)``;
-export const Description = styled.span`
+export const Description = styled(Span)`
 	box-sizing: border-box;
 	display: flex;
 	margin: 24px;
@@ -23,6 +24,6 @@ export const Description = styled.span`
 		theme: {
 			colors: { font },
 		},
-	}) => font.med};
+	}) => font};
 `;
 export const ServiceContainer = styled.div``;

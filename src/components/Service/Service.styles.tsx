@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Span } from '../common/Typography/Span/Span';
 import { Title } from '../common/Typography/Title/Title';
 
 export const Container = styled.div`
@@ -7,7 +8,7 @@ export const Container = styled.div`
 	padding: 24px;
 `;
 
-export const Description = styled.span`
+export const Description = styled(Span)`
 	margin-bottom: 12px;
 	display: block;
 `;

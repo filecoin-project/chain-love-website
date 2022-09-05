@@ -8,7 +8,6 @@ import {
 
 export const Sidebar = () => {
 	const { pathname } = useLocation();
-	console.log({ pathname });
 	return (
 		<Container>
 			<SectionTitleContainer>
