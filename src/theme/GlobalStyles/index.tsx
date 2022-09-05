@@ -1,9 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
-import { AppTheme } from '../';
-import EuropaWoff from '../fonts/europa-regular.woff';
-import EuropaWoff2 from '../fonts/europa-regular.woff2';
+import { ThemeType } from '../';
+import EuropaWoff from '../fonts/europa/europa-regular.woff';
+import EuropaWoff2 from '../fonts/europa/europa-regular.woff2';
+import BrandonGrotesqueWoff from '../fonts/brandon-grotesque/brandon-grotesque-medium.woff';
+import BrandonGrotesqueWoff2 from '../fonts/brandon-grotesque/brandon-grotesque-medium.woff2';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle<{theme: ThemeType}>`
   @font-face {
         font-family: 'Europa';
         src: local('Europa'), local('Europa'),
@@ -12,6 +14,16 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 300;
         font-style: normal;
     }
+
+    @font-face {
+        font-family: 'Brandon-Grotesque';
+        src: local('Brandon-Grotesque'), local('Brandon-Grotesque'),
+        url(${BrandonGrotesqueWoff2}) format('woff2'),
+        url(${BrandonGrotesqueWoff}) format('woff');
+        font-weight: 300;
+        font-style: normal;
+    }
+    
 
 
   * {
@@ -31,8 +43,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    background: ${AppTheme.colors.white};
-    font-family: ${AppTheme.fonts.rubik};
+    font-family: ${({theme: {fonts: {rubik}}}) => rubik};
   }
 
   button {
