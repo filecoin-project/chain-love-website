@@ -2643,7 +2643,7 @@ export const api: APIJson = [
 				},
 			},
 			{
-				title: 'MsigPropose',
+				title: 'MsigRemoveSigner',
 				description:
 					'MsigRemoveSigner proposes the removal of a signer from the multisig. It accepts the multisig to make the change on, the proposer address to send the message from, the address to be removed, and a boolean indicating whether or not the signing threshold should be lowered by one along with the address removal.',
 				permissions: 'sign',

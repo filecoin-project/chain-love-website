@@ -11,7 +11,7 @@ export function Service({
 	permissions,
 }: APIService) {
 	return (
-		<Container>
+		<Container id={title}>
 			<Title>{title}</Title>
 			<HorizontalLine />
 			<Container>
