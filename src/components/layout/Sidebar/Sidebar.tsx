@@ -21,7 +21,7 @@ export const Sidebar = () => {
 					type="h6"
 					active={pathname === '/tutorial'}
 				>
-					Tutorial
+					Getting Started
 				</SectionTitle>
 				<SectionTitle to="/docs" type="h6" active={pathname === '/docs'}>
 					API Docs

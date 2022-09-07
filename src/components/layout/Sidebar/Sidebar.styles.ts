@@ -48,7 +48,6 @@ export const SectionTitle: any = styled(Title).attrs({ as: Link })<{
 export const ServiceTitle: any = styled(Title).attrs({ as: Link })<{
 	active: boolean;
 }>`
-	font-size: 14px;
 	line-height: 30px;
 	margin-left: 10px;
 	cursor: ${({ active }) => (active ? 'default' : 'pointer')};
