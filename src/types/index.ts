@@ -18,3 +18,10 @@ export type APISection = {
 };
 
 export type APIJson = APISection[];
+
+export type APIRequestBody = {
+	jsonrpc: string;
+	method: string;
+	params: any;
+	id: number;
+};
