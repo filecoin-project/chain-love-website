@@ -26,8 +26,11 @@ export const SectionTitleContainer = styled.div`
 
 export const SectionTitle: any = styled(Title).attrs({ as: Link })<{
 	active: boolean;
+	subtitle: boolean;
 }>`
-	font-size: 22px;
+	font-size: ${({ subtitle }) => (subtitle ? '20px' : '22px')};
+	margin: ${({ subtitle }) => (subtitle ? '0 5px 0 0' : '10px 0 10px 0')};
+
 	line-height: 30px;
 	cursor: ${({ active }) => (active ? 'default' : 'pointer')};
 	color: ${({
@@ -42,7 +45,7 @@ export const SectionTitle: any = styled(Title).attrs({ as: Link })<{
 	}
 `;
 
-export const ServiceTitle: any = styled(Title)<{
+export const ServiceTitle: any = styled(Title).attrs({ as: Link })<{
 	active: boolean;
 }>`
 	font-size: 14px;
