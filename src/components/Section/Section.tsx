@@ -1,11 +1,13 @@
 import { APISection } from '../../types';
 import { HorizontalLine } from '../common/HorizontalLine/HorizontalLine';
+import { Playground } from '../Playground/Playground';
 import { Service } from '../Service/Service';
 import {
 	SectionContainer,
 	ServiceContainer,
 	Heading,
 	Description,
+	ServiceWrapper,
 } from './Section.styles';
 
 export function Section({ heading, description, services }: APISection) {
@@ -16,7 +18,10 @@ export function Section({ heading, description, services }: APISection) {
 			<Description>{description}</Description>
 			<ServiceContainer>
 				{services.map((service) => (
-					<Service {...service} key={service.title} />
+					<ServiceWrapper key={service.title}>
+						<Service {...service} />
+						<Playground {...service} />
+					</ServiceWrapper>
 				))}
 			</ServiceContainer>
 		</SectionContainer>
