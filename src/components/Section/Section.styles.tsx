@@ -4,8 +4,8 @@ import { Title } from '../common/Typography/Title/Title';
 
 export const SectionContainer = styled.div`
 	display: flex;
-	width: 80%;
-	min-width: 80%;
+	width: 100%;
+	min-width: 40%;
 	overflow-y: scroll;
 	flex-direction: column;
 	gap: 12px;
@@ -27,3 +27,8 @@ export const Description = styled(Span)`
 	}) => font};
 `;
 export const ServiceContainer = styled.div``;
+
+export const ServiceWrapper = styled.div`
+	display: flex;
+	align-items: center;
+`;
