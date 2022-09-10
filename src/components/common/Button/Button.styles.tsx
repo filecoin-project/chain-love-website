@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const StyledButton = styled.button<{ disabled: boolean }>`
 	background-color: ${({
 		theme: {
-			colors: { secondary },
+			colors: { primary },
 		},
-	}) => secondary};
+	}) => primary};
 	border-radius: 8px;
 	padding: 8px;
 	min-width: 4rem;
@@ -21,10 +21,6 @@ export const StyledButton = styled.button<{ disabled: boolean }>`
 	}
 
 	&:hover {
-		background-color: ${({
-			theme: {
-				colors: { secondary },
-			},
-		}) => `${secondary}aa`};
+		opacity: 0.6;
 	}
 `;

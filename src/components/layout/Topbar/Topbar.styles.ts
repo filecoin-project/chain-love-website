@@ -15,7 +15,7 @@ export const Container = styled.nav`
 		colors: { background: { topbar } },
 	},
 }) => topbar};
-padding: 5px 30px;
+padding: 5px 24px;
 border-bottom: 1px solid rgba(148, 151, 155, 0.2);
 
 `;

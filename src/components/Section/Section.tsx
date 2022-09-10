@@ -1,5 +1,6 @@
 import { APISection } from '../../types';
 import { HorizontalLine } from '../common/HorizontalLine/HorizontalLine';
+import { Title } from '../common/Typography/Title/Title';
 import { Playground } from '../Playground/Playground';
 import { Service } from '../Service/Service';
 import {
@@ -8,6 +9,7 @@ import {
 	Heading,
 	Description,
 	ServiceWrapper,
+	PlaygroundTitleContainer,
 } from './Section.styles';
 
 export function Section({ heading, description, services }: APISection) {
@@ -15,11 +17,15 @@ export function Section({ heading, description, services }: APISection) {
 		<SectionContainer>
 			<Heading type="h3">{heading}</Heading>
 			<HorizontalLine />
-			<Description>{description}</Description>
+			{description && <Description>{description}</Description>}
 			<ServiceContainer>
 				{services.map((service) => (
 					<ServiceWrapper key={service.title}>
 						<Service {...service} />
+						<PlaygroundTitleContainer>
+							<Title type='h3'>Playground</Title>
+							<HorizontalLine />
+						</PlaygroundTitleContainer>
 						<Playground {...service} />
 					</ServiceWrapper>
 				))}
