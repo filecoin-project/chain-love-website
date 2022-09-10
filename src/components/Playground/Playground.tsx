@@ -58,6 +58,7 @@ export function Playground({
 					codeLens: false,
 					colorDecorators: false,
 					contextmenu: false,
+					minimap: { enabled: false },
 				}}
 			/>
 			<Editor
@@ -79,6 +80,7 @@ export function Playground({
 					codeLens: false,
 					colorDecorators: false,
 					contextmenu: false,
+					minimap: { enabled: false },
 					readOnly: true,
 				}}
 			/>
