@@ -6,6 +6,7 @@ export const Container = styled.div`
 	width: 100%;
 	box-sizing: border-box;
 	padding: 24px;
+	max-width: 80rem;
 `;
 
 export const Description = styled(Span)`

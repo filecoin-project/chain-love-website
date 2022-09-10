@@ -13,9 +13,17 @@ export class ChainLoveAPI {
 
 	public static async callMethod(method: string, params: any) {
 		const { data } = await axios.post(
-			`https://api.chain.love/rpc/v1`,
+			`https://cors-enable.herokuapp.com/https://api.chain.love/rpc/v1`,
 			this.getJSONRPCBody(method, params),
+			{
+				headers: {
+					Accept: '*/*',
+					'Access-Control-Allow-Origin': '*',
+					'Content-type': 'application/json',
+				},
+			},
 		);
+		console.log({ data });
 		return data;
 	}
 }

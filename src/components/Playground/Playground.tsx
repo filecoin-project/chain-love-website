@@ -1,8 +1,9 @@
 import Editor from '@monaco-editor/react';
+import { useState } from 'react';
+import { ChainLoveAPI } from '../../api/chain.love';
 import { APIService } from '../../types';
-import { ButtonComponent } from '../common/Button/Button.styles';
-import { HighlightedCode } from '../common/Typography/HighlightedCode/HighlightedCode';
-import { PlaygroundContainer } from './Playground.styles';
+import { Button } from '../common/Button/Button';
+import { ButtonContainer, PlaygroundContainer } from './Playground.styles';
 
 export function Playground({
 	title,
@@ -10,19 +11,77 @@ export function Playground({
 	method,
 	permissions,
 }: APIService) {
+	const [code, setCode] = useState(() =>
+		JSON.stringify(method.request, null, 2),
+	);
+	const [res, setRes] = useState(() =>
+		JSON.stringify(method.response, null, 2),
+	);
+
+	const [loading, setLoading] = useState(false);
+
+	function handleTryClick() {
+		if (method.name || title) {
+			console.log({ code });
+			setLoading(true);
+			ChainLoveAPI.callMethod(method.name || title, JSON.parse(code)).then(
+				(data) => {
+					// setLoading(false);
+					setRes(JSON.stringify(data, null, 2));
+				},
+			);
+		}
+	}
 	return (
 		<PlaygroundContainer>
-			<ButtonComponent>Try it! 😎</ButtonComponent>
+			<ButtonContainer>
+				<Button disabled={loading} onClick={handleTryClick}>
+					Try it! 😎
+				</Button>
+			</ButtonContainer>
 			<Editor
-				height="30vh"
+				height="22rem"
 				width="100%"
-				defaultLanguage="javascript"
+				defaultLanguage="json"
 				theme="vs-dark"
-				value={JSON.stringify(method.request, null, 2)}
+				value={code}
+				onChange={(value) => {
+					setCode(value);
+				}}
+				className="styled-monaco-editor"
+				options={{
+					wordWrapColumn: 20,
+					scrollBeyondLastLine: false,
+					wordWrap: 'on',
+					acceptSuggestionOnCommitCharacter: true,
+					acceptSuggestionOnEnter: 'on',
+					codeLens: false,
+					colorDecorators: false,
+					contextmenu: false,
+				}}
 			/>
-			<HighlightedCode>
-				{JSON.stringify(method.response, null, 2)}
-			</HighlightedCode>
+			<Editor
+				height="22rem"
+				width="100%"
+				defaultLanguage="json"
+				theme="vs-dark"
+				value={loading ? 'Executing Service...' : res}
+				onChange={(value) => {
+					setCode(value);
+				}}
+				className="styled-monaco-editor"
+				options={{
+					wordWrapColumn: 20,
+					scrollBeyondLastLine: false,
+					wordWrap: 'on',
+					acceptSuggestionOnCommitCharacter: true,
+					acceptSuggestionOnEnter: 'on',
+					codeLens: false,
+					colorDecorators: false,
+					contextmenu: false,
+					readOnly: true,
+				}}
+			/>
 		</PlaygroundContainer>
 	);
 }
