@@ -26,7 +26,7 @@ export function Playground({
 			setLoading(true);
 			ChainLoveAPI.callMethod(method.name || title, JSON.parse(code)).then(
 				(data) => {
-					// setLoading(false);
+					setLoading(false);
 					setRes(JSON.stringify(data, null, 2));
 				},
 			);
