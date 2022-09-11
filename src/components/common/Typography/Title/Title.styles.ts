@@ -5,6 +5,10 @@ export const H1Component = styled.h1`
 	font-weight: 500;
 	line-height: 72px;
 	color: ${({ theme: { colors: { font } } }) => font};
+
+	@media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
+		word-wrap: break-word;
+	}
 `;
 
 export const H3Component = styled.h3`
@@ -12,6 +16,10 @@ export const H3Component = styled.h3`
 	font-weight: 500;
 	line-height: 56px;
 	color: ${({ theme: { colors: { font } } }) => font};
+
+	@media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
+		word-wrap: break-word;
+	}
 `;
 
 export const H6Component = styled.h6`
@@ -19,4 +27,8 @@ export const H6Component = styled.h6`
 	font-weight: 500;
 	line-height: 40px;
 	color: ${({ theme: { colors: { font } } }) => font};
+
+	@media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
+		word-wrap: break-word;
+	}
 `;
