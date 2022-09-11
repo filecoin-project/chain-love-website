@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { ChainLoveAPI } from '../../api/chain.love';
 import { APIService } from '../../types';
 import { Button } from '../common/Button/Button';
-import { ButtonContainer, PlaygroundContainer } from './Playground.styles';
+import { Title } from '../common/Typography/Title/Title';
+import {  EditorsContainer, PlaygroundContainer, TitleContainer } from './Playground.styles';
 
 export function Playground({
 	title,
@@ -34,11 +35,13 @@ export function Playground({
 	}
 	return (
 		<PlaygroundContainer>
-			<ButtonContainer>
+			<TitleContainer>
+				<Title type='h3'>Request Body</Title>
 				<Button disabled={loading} onClick={handleTryClick}>
-					Try it! 😎
+					Try it!
 				</Button>
-			</ButtonContainer>
+			</TitleContainer>
+			<EditorsContainer>
 			<Editor
 				height="22rem"
 				width="100%"
@@ -61,6 +64,9 @@ export function Playground({
 					minimap: { enabled: false },
 				}}
 			/>
+			<TitleContainer>
+				<Title type='h3'>Response</Title>
+			</TitleContainer>
 			<Editor
 				height="22rem"
 				width="100%"
@@ -84,6 +90,7 @@ export function Playground({
 					readOnly: true,
 				}}
 			/>
+			</EditorsContainer>
 		</PlaygroundContainer>
 	);
 }

@@ -6,4 +6,9 @@ export const Container = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   background-color: ${({ theme: { colors: { background: { wrapper } } } }) => wrapper};
+
+  @media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
+		flex-direction: column;
+    height: auto;
+	}
 `

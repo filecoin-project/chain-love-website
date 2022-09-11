@@ -5,6 +5,7 @@ const colors = {
 	accent: '#e90984',
 	purple: '#bb28fa',
 	secondary: '#9137ff',
+	darkGray: '#343434',
 	font: {
 		light: 'slategray',
 		dark: 'black',

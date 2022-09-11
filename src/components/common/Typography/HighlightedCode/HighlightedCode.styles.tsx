@@ -11,6 +11,7 @@ export const StyledPre = styled.pre`
 		},
 	}) => code};
 	word-wrap: break-word;
+	overflow: auto;
 	code {
 		word-wrap: wrap;
 	}

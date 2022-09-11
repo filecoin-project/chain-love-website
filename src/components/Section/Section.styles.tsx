@@ -30,5 +30,22 @@ export const ServiceContainer = styled.div``;
 
 export const ServiceWrapper = styled.div`
 	display: flex;
-	align-items: center;
+
+	@media screen and (max-width: ${({theme: {breakPoints: {large}}}) => large}) {
+    flex-direction: column;
+		margin-bottom: 30px;
+
+		:last-child{
+			margin-bottom: 0px;
+		}
+  }
 `;
+
+export const PlaygroundTitleContainer = styled.div`
+	margin-top: 20px;
+	display: none;
+	
+	@media screen and (max-width: ${({theme: {breakPoints: {large}}}) => large}) {
+		display: block;
+	}
+`

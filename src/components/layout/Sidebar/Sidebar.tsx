@@ -1,18 +1,37 @@
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { api } from '../../../constants/api';
+import { useMobileDetect } from '../../../hooks/useMobileDetect';
 import {
 	Container,
 	SectionTitleContainer,
 	SectionTitle,
 	ServiceTitle,
+	TitleAndArrowContainer,
+	MenuArrow,
 } from './Sidebar.styles';
+import { ReactComponent as ChevronDown } from '../../../assets/chevron-down.svg';
+import { ReactComponent as ChevronUp } from '../../../assets/chevron-up.svg';
+
+
 
 export const Sidebar = () => {
 	const { pathname, hash } = useLocation();
+	const mobileView = useMobileDetect();
+	const [showApiList, setShowApiList] = useState<boolean>(false);
 
 	const handleScrollTo = (id: string) => {
 		document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 	};
+
+	const toggleDocsClick = () => {
+		if(mobileView) {
+			setShowApiList(!showApiList)
+		} else {
+			setShowApiList(true);
+		}
+	}
+
 	return (
 		<Container>
 			<SectionTitleContainer>
@@ -23,10 +42,17 @@ export const Sidebar = () => {
 				>
 					Getting Started
 				</SectionTitle>
-				<SectionTitle to="/docs" type="h6" active={pathname === '/docs'}>
-					API Docs
+				<TitleAndArrowContainer onClick={toggleDocsClick}>
+				<SectionTitle to={'/docs'} type="h6" active={pathname === '/docs'}>
+					{mobileView ? 'Menu' : 'API Docs'}
 				</SectionTitle>
-				{pathname.includes('/docs') &&
+				{mobileView && 
+					<MenuArrow>
+						{showApiList ? <ChevronUp /> : <ChevronDown />}
+					</MenuArrow>
+				}
+				</TitleAndArrowContainer>
+				{showApiList &&
 					api.map((section) => {
 						const sectionRoute = `/${section.heading}`;
 						const isActive = pathname.includes(sectionRoute);
@@ -39,6 +65,7 @@ export const Sidebar = () => {
 									type="h6"
 									active={isActive}
 									subtitle
+									onClick={toggleDocsClick}
 								>
 									{section.heading}
 								</SectionTitle>

@@ -2,7 +2,7 @@ import { APIService } from '../../types';
 import { HorizontalLine } from '../common/HorizontalLine/HorizontalLine';
 import { HighlightedCode } from '../common/Typography/HighlightedCode/HighlightedCode';
 import { Title } from '../common/Typography/Title/Title';
-import { Description, Method, Container, StyledCode } from './Service.styles';
+import { Description, Method, Container, StyledCode, Content,  } from './Service.styles';
 
 export function Service({
 	title,
@@ -14,27 +14,31 @@ export function Service({
 		<Container id={title}>
 			<Title>{title}</Title>
 			<HorizontalLine />
-			<Container>
+			<Content>
 				<Method type="h6">
 					Method: <StyledCode>{method.name || title}</StyledCode>
 				</Method>
 				<Method type="h6">
 					Permissions: <StyledCode>{permissions}</StyledCode>
 				</Method>
-				<br />
-				<Description>{description}</Description>
-				<br />
+				{description && 
+					<>
+						<br />
+						<Description>{description}</Description>
+						<br />
+					</>
+				}
 				<HorizontalLine opacity={0.5} />
-				<Title type="h3">Inputs : </Title>
+				<Title type="h3">Inputs: </Title>
 				<HighlightedCode>
 					{JSON.stringify(method.request, null, 2)}
 				</HighlightedCode>
-				<Title type="h3">Response : </Title>
+				<Title type="h3">Response: </Title>
 
 				<HighlightedCode>
 					{JSON.stringify(method.response, null, 2)}
 				</HighlightedCode>
-			</Container>
+			</Content>
 		</Container>
 	);
 }

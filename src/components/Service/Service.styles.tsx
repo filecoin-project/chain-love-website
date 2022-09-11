@@ -5,8 +5,13 @@ import { Title } from '../common/Typography/Title/Title';
 export const Container = styled.div`
 	width: 100%;
 	box-sizing: border-box;
-	padding: 24px;
+	padding-left: 24px;
 	max-width: 80rem;
+`;
+
+export const Content = styled(Container)`
+	padding: 0px;
+	border: none;
 `;
 
 export const Description = styled(Span)`

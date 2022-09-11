@@ -4558,41 +4558,41 @@ export const api: APIJson = [
 					},
 				},
 			},
-			{
-				title: 'StateMinerInitialPledgeCollateral',
-				description:
-					'StateMinerInitialPledgeCollateral returns the precommit deposit for the specified miner’s sector',
-				permissions: 'read',
-				method: {
-					request: [
-						'f01234',
-						{
-							SealProof: 8,
-							SectorNumber: 9,
-							SealedCID: {
-								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
-							},
-							SealRandEpoch: 10101,
-							DealIDs: [5432],
-							Expiration: 10101,
-							ReplaceCapacity: true,
-							ReplaceSectorDeadline: 42,
-							ReplaceSectorPartition: 42,
-							ReplaceSectorNumber: 9,
-						},
-						[
-							{
-								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
-							},
-							{
-								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
-							},
-						],
-					],
+			// {
+			// 	title: 'StateMinerInitialPledgeCollateral',
+			// 	description:
+			// 		'StateMinerInitialPledgeCollateral returns the precommit deposit for the specified miner’s sector',
+			// 	permissions: 'read',
+			// 	method: {
+			// 		request: [
+			// 			'f01234',
+			// 			{
+			// 				SealProof: 8,
+			// 				SectorNumber: 9,
+			// 				SealedCID: {
+			// 					'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+			// 				},
+			// 				SealRandEpoch: 10101,
+			// 				DealIDs: [5432],
+			// 				Expiration: 10101,
+			// 				ReplaceCapacity: true,
+			// 				ReplaceSectorDeadline: 42,
+			// 				ReplaceSectorPartition: 42,
+			// 				ReplaceSectorNumber: 9,
+			// 			},
+			// 			[
+			// 				{
+			// 					'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+			// 				},
+			// 				{
+			// 					'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+			// 				},
+			// 			],
+			// 		],
 
-					response: '0',
-				},
-			},
+			// 		response: '0',
+			// 	},
+			// },
 			{
 				title: 'StateMinerProvingDeadline',
 				description:
@@ -5212,26 +5212,26 @@ export const api: APIJson = [
 					response: 'f01234',
 				},
 			},
-			{
-				title: 'StateVerifiedRegistryRootKey',
-				description:
-					'StateVerifiedRegistryRootKey returns the address of the Verified Registry’s root key',
-				permissions: 'read',
-				method: {
-					request: [
-						[
-							{
-								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
-							},
-							{
-								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
-							},
-						],
-					],
+			// {
+			// 	title: 'StateVerifiedRegistryRootKey',
+			// 	description:
+			// 		'StateVerifiedRegistryRootKey returns the address of the Verified Registry’s root key',
+			// 	permissions: 'read',
+			// 	method: {
+			// 		request: [
+			// 			[
+			// 				{
+			// 					'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+			// 				},
+			// 				{
+			// 					'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+			// 				},
+			// 			],
+			// 		],
 
-					response: 'f01234',
-				},
-			},
+			// 		response: 'f01234',
+			// 	},
+			// },
 			{
 				title: 'StateVerifierStatus',
 				description:

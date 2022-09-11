@@ -8,12 +8,18 @@ export const Container = styled.div`
 	overflow-y: auto;
 	max-width: 270px;
 	background-color: ${({
-		theme: {
-			colors: {
-				background: { sidebar },
-			},
+	theme: {
+		colors: {
+			background: { sidebar },
 		},
-	}) => sidebar};
+	},
+}) => sidebar};
+
+	@media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
+		min-height: 155px;
+		height: 100%;
+		max-width: none;
+	}
 `;
 
 export const SectionTitleContainer = styled.div`
@@ -22,9 +28,13 @@ export const SectionTitleContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+
+	@media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
+		padding: 23px;
+	}
 `;
 
-export const SectionTitle: any = styled(Title).attrs({ as: Link })<{
+export const SectionTitle: any = styled(Title).attrs({ as: Link }) <{
 	active: boolean;
 	subtitle: boolean;
 }>`
@@ -32,33 +42,46 @@ export const SectionTitle: any = styled(Title).attrs({ as: Link })<{
 	margin: ${({ subtitle }) => (subtitle ? '0 5px 0 0' : '10px 0 10px 0')};
 
 	line-height: 30px;
-	cursor: ${({ active }) => (active ? 'default' : 'pointer')};
+	cursor: pointer;
 	color: ${({
-		theme: {
-			colors: { primary, font },
-		},
-		active,
-	}) => (active ? primary : font)};
+	theme: {
+		colors: { primary, font },
+	},
+	active,
+}) => (active ? primary : font)};
 	text-decoration: none;
 	&: {
 		color: ${({ theme: { colors } }) => colors.primary};
 	}
 `;
 
-export const ServiceTitle: any = styled(Title).attrs({ as: Link })<{
+export const ServiceTitle: any = styled(Title).attrs({ as: Link }) <{
 	active: boolean;
 }>`
 	line-height: 30px;
 	margin-left: 10px;
 	cursor: ${({ active }) => (active ? 'default' : 'pointer')};
 	color: ${({
-		theme: {
-			colors: { primary, font },
-		},
-		active,
-	}) => (active ? primary : font)};
+	theme: {
+		colors: { primary, font },
+	},
+	active,
+}) => (active ? primary : font)};
 	text-decoration: none;
 	&: {
 		color: ${({ theme: { colors } }) => colors.primary};
 	}
 `;
+
+export const TitleAndArrowContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+`;
+
+export const MenuArrow = styled.div`
+	cursor: pointer;
+	:hover{
+		opacity: 0.7;
+	}
+`
