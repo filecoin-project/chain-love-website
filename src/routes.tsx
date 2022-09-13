@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { Section } from './components/Section/Section';
 import { Tutorial } from './components/Tutorial/Tutorial';
 import { api } from './constants/api';
@@ -18,9 +18,10 @@ export function AppRoutes() {
 						);
 					})}
 				</Route>
-				<Route path="/" element={<Main />}>
+				<Route path="/tutorial" element={<Main />}>
 					<Route path="/tutorial" element={<Tutorial />} />
 				</Route>
+				<Route path="/" element={<Navigate to="/tutorial" replace />} />
 			</Routes>
 		</BrowserRouter>
 	);
