@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { APIRequestBody } from '../types';
 
+const API_TYPE = process.env.REACT_APP_LOTUS_API_TYPE;
 export class ChainLoveAPI {
 	public static getJSONRPCBody(method: string, params: any): APIRequestBody {
 		return {
@@ -13,7 +14,9 @@ export class ChainLoveAPI {
 
 	public static async callMethod(method: string, params: any) {
 		const { data } = await axios.post(
-			`https://cors-enable.herokuapp.com/https://api.chain.love/rpc/v1`,
+			API_TYPE === 'fullnode'
+				? process.env.REACT_APP_FULL_NODE_API_URL
+				: process.env.REACT_APP_GATEWAY_API_URL,
 			this.getJSONRPCBody(method, params),
 			{
 				headers: {
