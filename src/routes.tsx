@@ -1,12 +1,11 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter , Route, Routes, Navigate } from 'react-router-dom';
 import { Section } from './components/Section/Section';
 import { Tutorial } from './components/Tutorial/Tutorial';
 import { api } from './constants/api';
 import { Main } from './containers/Main/Main';
 export function AppRoutes() {
-	console.log(process.env.LOTUS_API_TYPE === 'fullnode', process.env);
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Routes>
 				<Route path="/docs" element={<Main />}>
 					{api.map((section) => {
@@ -24,6 +23,6 @@ export function AppRoutes() {
 				</Route>
 				<Route path="/" element={<Navigate to="/tutorial" replace />} />
 			</Routes>
-		</BrowserRouter>
+		</HashRouter >
 	);
 }
