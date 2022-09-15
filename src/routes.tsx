@@ -4,6 +4,7 @@ import { Tutorial } from './components/Tutorial/Tutorial';
 import { api } from './constants/api';
 import { Main } from './containers/Main/Main';
 export function AppRoutes() {
+	console.log(process.env.LOTUS_API_TYPE === 'fullnode', process.env);
 	return (
 		<BrowserRouter>
 			<Routes>

@@ -1,6 +1,6 @@
 import { APIJson } from '../types';
 
-export const api: APIJson = [
+const fullnodeApi: APIJson = [
 	{
 		heading: 'Auth',
 		description: '',
@@ -5834,3 +5834,1145 @@ export const api: APIJson = [
 		],
 	},
 ];
+
+const gatewayApi: APIJson = [
+	{
+		heading: 'Chain',
+		description:
+			'The Chain method group contains methods for interacting with the blockchain, but that do not require any form of state computation.',
+		services: [
+			{
+				title: 'ChainGetBlockMessages',
+				description:
+					'ChainGetBlockMessages returns messages stored in the specified block. Note: If there are multiple blocks in a tipset, it’s likely that some messages will be duplicated. It’s also possible for blocks in a tipset to have different messages from the same sender at the same nonce. When that happens, only the first message (in a block with lowest ticket) will be considered for execution NOTE: THIS METHOD SHOULD ONLY BE USED FOR GETTING MESSAGES IN A SPECIFIC BLOCK DO NOT USE THIS METHOD TO GET MESSAGES INCLUDED IN A TIPSET Use ChainGetParentMessages, which will perform correct message deduplication',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+					],
+					response: {
+						BlsMessages: [
+							{
+								Version: 42,
+								To: 'f01234',
+								From: 'f01234',
+								Nonce: 42,
+								Value: '0',
+								GasLimit: 9,
+								GasFeeCap: '0',
+								GasPremium: '0',
+								Method: 1,
+								Params: 'Ynl0ZSBhcnJheQ==',
+								CID: {
+									'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+								},
+							},
+						],
+						SecpkMessages: [
+							{
+								Message: {
+									Version: 42,
+									To: 'f01234',
+									From: 'f01234',
+									Nonce: 42,
+									Value: '0',
+									GasLimit: 9,
+									GasFeeCap: '0',
+									GasPremium: '0',
+									Method: 1,
+									Params: 'Ynl0ZSBhcnJheQ==',
+									CID: {
+										'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+									},
+								},
+								Signature: {
+									Type: 2,
+									Data: 'Ynl0ZSBhcnJheQ==',
+								},
+								CID: {
+									'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+								},
+							},
+						],
+						Cids: [
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+						],
+					},
+				},
+			},
+			{
+				title: 'ChainGetGenesis',
+				description: 'ChainGetGenesis returns the genesis tipset.',
+				permissions: 'read',
+				method: {
+					request: [],
+					response: {
+						Cids: null,
+						Blocks: null,
+						Height: 0,
+					},
+				},
+			},
+			{
+				title: 'ChainGetMessage',
+				description:
+					'ChainGetMessage reads a message referenced by the specified CID from the chain blockstore.',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+					],
+					response: {
+						Version: 42,
+						To: 'f01234',
+						From: 'f01234',
+						Nonce: 42,
+						Value: '0',
+						GasLimit: 9,
+						GasFeeCap: '0',
+						GasPremium: '0',
+						Method: 1,
+						Params: 'Ynl0ZSBhcnJheQ==',
+						CID: {
+							'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+						},
+					},
+				},
+			},
+
+			{
+				title: 'ChainGetNode',
+				description: '',
+				permissions: 'read',
+				method: {
+					request: ['string value'],
+
+					response: {
+						Cid: {
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+						Obj: {},
+					},
+				},
+			},
+			{
+				title: 'ChainGetParentMessages',
+				description:
+					'ChainGetParentMessages returns messages stored in parent tipset of the specified block.',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+					],
+
+					response: [
+						{
+							Cid: {
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							Message: {
+								Version: 42,
+								To: 'f01234',
+								From: 'f01234',
+								Nonce: 42,
+								Value: '0',
+								GasLimit: 9,
+								GasFeeCap: '0',
+								GasPremium: '0',
+								Method: 1,
+								Params: 'Ynl0ZSBhcnJheQ==',
+								CID: {
+									'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+								},
+							},
+						},
+					],
+				},
+			},
+			{
+				title: 'ChainGetParentReceipts',
+				description:
+					'ChainGetParentReceipts returns receipts for messages in parent tipset of the specified block. The receipts in the list returned is one-to-one with the messages returned by a call to ChainGetParentMessages with the same blockCid.',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+					],
+
+					response: [
+						{
+							ExitCode: 0,
+							Return: 'Ynl0ZSBhcnJheQ==',
+							GasUsed: 9,
+						},
+					],
+				},
+			},
+			{
+				title: 'ChainGetPath',
+				description:
+					'ChainGetPath returns a set of revert/apply operations needed to get from one tipset to another.',
+				permissions: 'read',
+				method: {
+					request: [
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: [
+						{
+							Type: 'string value',
+							Val: {
+								Cids: null,
+								Blocks: null,
+								Height: 0,
+							},
+						},
+					],
+				},
+			},
+
+			{
+				title: 'ChainGetTipSet',
+				description:
+					'ChainGetTipSet returns the tipset specified by the given TipSetKey.',
+				permissions: 'read',
+				method: {
+					request: [
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Cids: null,
+						Blocks: null,
+						Height: 0,
+					},
+				},
+			},
+			{
+				title: 'ChainGetTipSetByHeight',
+				description:
+					'ChainGetTipSetByHeight looks back for a tipset at the specified epoch. If there are no blocks at the specified epoch, a tipset at an earlier epoch will be returned.',
+				permissions: 'read',
+				method: {
+					request: [
+						10101,
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Cids: null,
+						Blocks: null,
+						Height: 0,
+					},
+				},
+			},
+			{
+				title: 'ChainHasObj',
+				description:
+					'ChainHasObj checks if a given CID exists in the chain blockstore.',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+					],
+
+					response: true,
+				},
+			},
+			{
+				title: 'ChainHead',
+				description: 'ChainHead returns the current head of the chain.',
+				permissions: 'read',
+				method: {
+					request: [],
+
+					response: {
+						Cids: null,
+						Blocks: null,
+						Height: 0,
+					},
+				},
+			},
+			{
+				title: 'ChainNotify',
+				description:
+					'ChainNotify returns channel with chain head updates. First message is guaranteed to be of len == 1, and type == ‘current’.',
+				permissions: 'read',
+				method: {
+					request: [],
+
+					response: [
+						{
+							Type: 'string value',
+							Val: {
+								Cids: null,
+								Blocks: null,
+								Height: 0,
+							},
+						},
+					],
+				},
+			},
+			{
+				title: 'ChainPutObj',
+				description: 'ChainPutObj puts and object into the blockstore',
+				permissions: '',
+				method: {
+					request: [{}],
+
+					response: {},
+				},
+			},
+			{
+				title: 'ChainReadObj',
+				description:
+					'ChainReadObj reads ipld nodes referenced by the specified CID from chain blockstore and returns raw bytes.',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+					],
+
+					response: 'Ynl0ZSBhcnJheQ==',
+				},
+			},
+		],
+	},
+
+	{
+		heading: 'Gas',
+		description: '',
+		services: [
+			{
+				title: 'GasEstimateMessageGas',
+				description:
+					'GasEstimateMessageGas estimates gas values for unset message gas fields',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							Version: 42,
+							To: 'f01234',
+							From: 'f01234',
+							Nonce: 42,
+							Value: '0',
+							GasLimit: 9,
+							GasFeeCap: '0',
+							GasPremium: '0',
+							Method: 1,
+							Params: 'Ynl0ZSBhcnJheQ==',
+							CID: {
+								'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+							},
+						},
+						{
+							MaxFee: '0',
+							MsgUuid: '07070707-0707-0707-0707-070707070707',
+						},
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+					response: {
+						Version: 42,
+						To: 'f01234',
+						From: 'f01234',
+						Nonce: 42,
+						Value: '0',
+						GasLimit: 9,
+						GasFeeCap: '0',
+						GasPremium: '0',
+						Method: 1,
+						Params: 'Ynl0ZSBhcnJheQ==',
+						CID: {
+							'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+						},
+					},
+				},
+			},
+		],
+	},
+	{
+		heading: 'Mpool',
+		description:
+			'The Mpool methods are for interacting with the message pool. The message pool manages all incoming and outgoing ‘messages’ going over the network.',
+		services: [
+			{
+				title: 'MpoolPushUntrusted',
+				description:
+					'MpoolPushUntrusted pushes a signed message to mempool from untrusted sources.',
+				permissions: 'sign',
+				method: {
+					request: [
+						{
+							Message: {
+								Version: 42,
+								To: 'f01234',
+								From: 'f01234',
+								Nonce: 42,
+								Value: '0',
+								GasLimit: 9,
+								GasFeeCap: '0',
+								GasPremium: '0',
+								Method: 1,
+								Params: 'Ynl0ZSBhcnJheQ==',
+								CID: {
+									'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+								},
+							},
+							Signature: {
+								Type: 2,
+								Data: 'Ynl0ZSBhcnJheQ==',
+							},
+							CID: {
+								'/': 'bafy2bzacebbpdegvr3i4cosewthysg5xkxpqfn2wfcz6mv2hmoktwbdxkax4s',
+							},
+						},
+					],
+					response: {
+						'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+					},
+				},
+			},
+		],
+	},
+	{
+		heading: 'Msig',
+		description:
+			'The Msig methods are used to interact with multisig wallets on the filecoin network',
+		services: [
+			{
+				title: 'MsigGetAvailableBalance',
+				description:
+					'MsigGetAvailableBalance returns the portion of a multisig’s balance that can be withdrawn or spent',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+					response: '0',
+				},
+			},
+			{
+				title: 'MsigGetPending',
+				description:
+					'MsigGetPending returns pending transactions for the given multisig wallet. Once pending transactions are fully approved, they will no longer appear here.',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+					response: [
+						{
+							ID: 9,
+							To: 'f01234',
+							Value: '0',
+							Method: 1,
+							Params: 'Ynl0ZSBhcnJheQ==',
+							Approved: ['f01234'],
+						},
+					],
+				},
+			},
+			{
+				title: 'MsigGetVested',
+				description:
+					'MsigGetVested returns the amount of FIL that vested in a multisig in a certain period. It takes the following params: , ,',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+					response: '0',
+				},
+			},
+			{
+				title: 'MsigGetVestingSchedule',
+				description:
+					'MsigGetVestingSchedule returns the vesting details of a given multisig.',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+					response: {
+						InitialBalance: '0',
+						StartEpoch: 10101,
+						UnlockDuration: 10101,
+					},
+				},
+			},
+		],
+	},
+	{
+		heading: 'State',
+		description:
+			'The State methods are used to query, inspect, and interact with chain state. Most methods take a TipSetKey as a parameter. The state looked up is the parent state of the tipset. A nil TipSetKey can be provided as a param, this will cause the heaviest tipset in the chain to be used.',
+		services: [
+			{
+				title: 'StateAccountKey',
+				description:
+					'StateAccountKey returns the public key address of the given ID address',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+					response: 'f01234',
+				},
+			},
+
+			{
+				title: 'StateCirculatingSupply',
+				description:
+					'StateCirculatingSupply returns the exact circulating supply of Filecoin at the given tipset. This is not used anywhere in the protocol itself, and is only for external consumption.',
+				permissions: 'read',
+				method: {
+					request: [
+						{
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+						{
+							'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+						},
+					],
+
+					response: '0',
+				},
+			},
+
+			{
+				title: 'StateDealProviderCollateralBounds',
+				description:
+					'StateDealProviderCollateralBounds returns the min and max collateral a storage provider can issue. It takes the deal size and verified status as parameters.',
+				permissions: 'read',
+				method: {
+					request: [
+						1032,
+						true,
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Min: '0',
+						Max: '0',
+					},
+				},
+			},
+			{
+				title: 'StateDecodeParams',
+				description:
+					'StateDecodeParams attempts to decode the provided params, based on the recipient actor address and method number.',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						1,
+						'Ynl0ZSBhcnJheQ==',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {},
+				},
+			},
+			{
+				title: 'StateGetActor',
+				description:
+					'StateGetActor returns the indicated actor’s nonce and balance.',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Code: {
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+						Head: {
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+						Nonce: 42,
+						Balance: '0',
+					},
+				},
+			},
+
+			{
+				title: 'StateListMiners',
+				description:
+					'StateListMiners returns the addresses of every miner that has claimed power in the Power Actor',
+				permissions: 'read',
+				method: {
+					request: [
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: ['f01234'],
+				},
+			},
+
+			{
+				title: 'StateMarketBalance',
+				description:
+					'StateMarketBalance looks up the Escrow and Locked balances of the given address in the Storage Market',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Escrow: '0',
+						Locked: '0',
+					},
+				},
+			},
+			{
+				title: 'StateMarketDeals',
+				description:
+					'StateMarketDeals returns information about every deal in the Storage Market',
+				permissions: 'read',
+				method: {
+					request: [
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						t026363: {
+							Proposal: {
+								PieceCID: {
+									'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+								},
+								PieceSize: 1032,
+								VerifiedDeal: true,
+								Client: 'f01234',
+								Provider: 'f01234',
+								Label: '',
+								StartEpoch: 10101,
+								EndEpoch: 10101,
+								StoragePricePerEpoch: '0',
+								ProviderCollateral: '0',
+								ClientCollateral: '0',
+							},
+							State: {
+								SectorStartEpoch: 10101,
+								LastUpdatedEpoch: 10101,
+								SlashEpoch: 10101,
+							},
+						},
+					},
+				},
+			},
+
+			{
+				title: 'StateMarketStorageDeal',
+				description:
+					'StateMarketStorageDeal returns information about the indicated deal',
+				permissions: 'read',
+				method: {
+					request: [
+						5432,
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Proposal: {
+							PieceCID: {
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							PieceSize: 1032,
+							VerifiedDeal: true,
+							Client: 'f01234',
+							Provider: 'f01234',
+							Label: '',
+							StartEpoch: 10101,
+							EndEpoch: 10101,
+							StoragePricePerEpoch: '0',
+							ProviderCollateral: '0',
+							ClientCollateral: '0',
+						},
+						State: {
+							SectorStartEpoch: 10101,
+							LastUpdatedEpoch: 10101,
+							SlashEpoch: 10101,
+						},
+					},
+				},
+			},
+
+			{
+				title: 'StateMinerAvailableBalance',
+				description:
+					'StateMinerAvailableBalance returns the portion of a miner’s balance that can be withdrawn or spent',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: '0',
+				},
+			},
+			{
+				title: 'StateMinerDeadlines',
+				description:
+					'StateMinerDeadlines returns all the proving deadlines for the given miner',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: [
+						{
+							PostSubmissions: [5, 1],
+							DisputableProofCount: 42,
+						},
+					],
+				},
+			},
+			{
+				title: 'StateMinerFaults',
+				description:
+					'StateMinerFaults returns a bitfield indicating the faulty sectors of the given miner',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: [5, 1],
+				},
+			},
+			{
+				title: 'StateMinerInfo',
+				description: 'StateMinerInfo returns info about the indicated miner',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Owner: 'f01234',
+						Worker: 'f01234',
+						NewWorker: 'f01234',
+						ControlAddresses: ['f01234'],
+						WorkerChangeEpoch: 10101,
+						PeerId: '12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf',
+						Multiaddrs: ['Ynl0ZSBhcnJheQ=='],
+						WindowPoStProofType: 8,
+						SectorSize: 34359738368,
+						WindowPoStPartitionSectors: 42,
+						ConsensusFaultElapsed: 10101,
+					},
+				},
+			},
+
+			{
+				title: 'StateMinerPower',
+				description: 'StateMinerPower returns the power of the indicated miner',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						MinerPower: {
+							RawBytePower: '0',
+							QualityAdjPower: '0',
+						},
+						TotalPower: {
+							RawBytePower: '0',
+							QualityAdjPower: '0',
+						},
+						HasMinPower: true,
+					},
+				},
+			},
+
+			{
+				title: 'StateMinerProvingDeadline',
+				description:
+					'StateMinerProvingDeadline calculates the deadline at some epoch for a proving period and returns the deadline-related calculations.',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						CurrentEpoch: 10101,
+						PeriodStart: 10101,
+						Index: 42,
+						Open: 10101,
+						Close: 10101,
+						Challenge: 10101,
+						FaultCutoff: 10101,
+						WPoStPeriodDeadlines: 42,
+						WPoStProvingPeriod: 10101,
+						WPoStChallengeWindow: 10101,
+						WPoStChallengeLookback: 10101,
+						FaultDeclarationCutoff: 10101,
+					},
+				},
+			},
+			{
+				title: 'StateMinerRecoveries',
+				description:
+					'StateMinerRecoveries returns a bitfield indicating the recovering sectors of the given miner',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: [5, 1],
+				},
+			},
+
+			{
+				title: 'StateReadState',
+				description: 'StateReadState returns the indicated actor’s state.',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						Balance: '0',
+						Code: {
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+						State: {},
+					},
+				},
+			},
+
+			{
+				title: 'StateSectorGetInfo',
+				description:
+					'StateSectorGetInfo returns the on-chain info for the specified miner’s sector. Returns null in case the sector info isn’t found NOTE: returned info.Expiration may not be accurate in some cases, use StateSectorExpiration to get accurate expiration epoch',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						9,
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						SectorNumber: 9,
+						SealProof: 8,
+						SealedCID: {
+							'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+						},
+						DealIDs: [5432],
+						Activation: 10101,
+						Expiration: 10101,
+						DealWeight: '0',
+						VerifiedDealWeight: '0',
+						InitialPledge: '0',
+						ExpectedDayReward: '0',
+						ExpectedStoragePledge: '0',
+						ReplacedSectorAge: 10101,
+						ReplacedDayReward: '0',
+						SectorKeyCID: null,
+					},
+				},
+			},
+
+			{
+				title: 'StateVMCirculatingSupplyInternal',
+				description:
+					'StateVMCirculatingSupplyInternal returns an approximation of the circulating supply of Filecoin at the given tipset. This is the value reported by the runtime interface to actors code.',
+				permissions: 'read',
+				method: {
+					request: [
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: {
+						FilVested: '0',
+						FilMined: '0',
+						FilBurnt: '0',
+						FilLocked: '0',
+						FilCirculating: '0',
+						FilReserveDisbursed: '0',
+					},
+				},
+			},
+			{
+				title: 'StateVerifiedClientStatus',
+				description:
+					'StateVerifiedClientStatus returns the data cap for the given address. Returns nil if there is no entry in the data cap table for the address.',
+				permissions: 'read',
+				method: {
+					request: [
+						'f01234',
+						[
+							{
+								'/': 'bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4',
+							},
+							{
+								'/': 'bafy2bzacebp3shtrn43k7g3unredz7fxn4gj533d3o43tqn2p2ipxxhrvchve',
+							},
+						],
+					],
+
+					response: '0',
+				},
+			},
+		],
+	},
+
+	{
+		heading: 'Wallet',
+		description: '',
+		services: [
+			{
+				title: 'WalletBalance',
+				description:
+					'WalletBalance returns the balance of the given address at the current head of the chain.',
+				permissions: 'read',
+				method: {
+					request: ['f01234'],
+					response: '0',
+				},
+			},
+		],
+	},
+];
+
+export const api: APIJson =
+	process.env.REACT_APP_LOTUS_API_TYPE === 'fullnode'
+		? fullnodeApi
+		: gatewayApi;
