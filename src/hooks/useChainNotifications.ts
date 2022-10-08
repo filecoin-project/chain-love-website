@@ -31,16 +31,21 @@ export function useChainNotifications() {
 			// Listen for messages
 			socketClient.addEventListener('message', (event) => {
 				const data = JSON.parse(event.data);
-				if (notifications.length < 20) {
-					setNotifications({
-						type: 'append',
-						payload: data.params[1][0].Val.Blocks,
-					});
-				} else {
-					setNotifications({
-						type: 'reset',
-						payload: data.params[1][0].Val.Blocks,
-					});
+				const filteredBlocks = (data.params || [])[1]?.filter(
+					(i: any) => i.Type === 'current',
+				);
+				if (!!filteredBlocks?.length) {
+					if (notifications.length < 20) {
+						setNotifications({
+							type: 'append',
+							payload: filteredBlocks[0].Val.Blocks,
+						});
+					} else {
+						setNotifications({
+							type: 'reset',
+							payload: filteredBlocks[0].Val.Blocks,
+						});
+					}
 				}
 			});
 		}
