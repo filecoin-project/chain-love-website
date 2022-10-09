@@ -1,4 +1,6 @@
-import { HashRouter , Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { WalletPage } from './components/WalletPage/WalletPage';
+import { MessagePage } from './components/MessagePage/MessagePage';
 import { Section } from './components/Section/Section';
 import { Tutorial } from './components/Tutorial/Tutorial';
 import { api } from './constants/api';
@@ -21,8 +23,14 @@ export function AppRoutes() {
 				<Route path="/tutorial" element={<Main />}>
 					<Route path="/tutorial" element={<Tutorial />} />
 				</Route>
+				<Route path="/api/test" element={<Main />}>
+					<Route path="/api/test" element={<WalletPage />} />
+				</Route>
+				<Route path="/api/message" element={<Main />}>
+					<Route path="/api/message" element={<MessagePage />} />
+				</Route>
 				<Route path="/" element={<Navigate to="/tutorial" replace />} />
 			</Routes>
-		</HashRouter >
+		</HashRouter>
 	);
 }
