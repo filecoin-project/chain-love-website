@@ -13,8 +13,6 @@ import {
 import { ReactComponent as ChevronDown } from '../../../assets/chevron-down.svg';
 import { ReactComponent as ChevronUp } from '../../../assets/chevron-up.svg';
 
-
-
 export const Sidebar = () => {
 	const { pathname, hash } = useLocation();
 	const mobileView = useMobileDetect();
@@ -25,12 +23,12 @@ export const Sidebar = () => {
 	};
 
 	const toggleDocsClick = () => {
-		if(mobileView) {
-			setShowApiList(!showApiList)
+		if (mobileView) {
+			setShowApiList(!showApiList);
 		} else {
 			setShowApiList(true);
 		}
-	}
+	};
 
 	return (
 		<Container>
@@ -43,14 +41,14 @@ export const Sidebar = () => {
 					Getting Started
 				</SectionTitle>
 				<TitleAndArrowContainer onClick={toggleDocsClick}>
-				<SectionTitle to={'/docs'} type="h6" active={pathname === '/docs'}>
-					{mobileView ? 'Menu' : 'API Docs'}
-				</SectionTitle>
-				{mobileView && 
-					<MenuArrow>
-						{showApiList ? <ChevronUp /> : <ChevronDown />}
-					</MenuArrow>
-				}
+					<SectionTitle to={'/docs'} type="h6" active={pathname === '/docs'}>
+						{mobileView ? 'Menu' : 'API Docs'}
+					</SectionTitle>
+					{mobileView && (
+						<MenuArrow>
+							{showApiList ? <ChevronUp /> : <ChevronDown />}
+						</MenuArrow>
+					)}
 				</TitleAndArrowContainer>
 				{showApiList &&
 					api.map((section) => {
@@ -90,6 +88,21 @@ export const Sidebar = () => {
 							</>
 						);
 					})}
+				<SectionTitle
+					to="/api/test"
+					type="h6"
+					active={pathname === '/api/test'}
+				>
+					Wallet Info
+				</SectionTitle>
+
+				<SectionTitle
+					to="/api/message"
+					type="h6"
+					active={pathname === '/api/message'}
+				>
+					Message
+				</SectionTitle>
 			</SectionTitleContainer>
 		</Container>
 	);

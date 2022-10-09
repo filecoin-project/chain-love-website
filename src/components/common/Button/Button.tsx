@@ -4,13 +4,15 @@ export function Button({
 	children,
 	disabled,
 	onClick,
+	type,
 }: {
 	disabled: boolean;
 	children: string;
 	onClick: () => void;
+	type?: any;
 }) {
 	return (
-		<StyledButton disabled={disabled} onClick={onClick}>
+		<StyledButton type={type} disabled={disabled} onClick={onClick}>
 			{children}
 		</StyledButton>
 	);
