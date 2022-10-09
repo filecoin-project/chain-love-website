@@ -18,7 +18,7 @@ export function WalletPage() {
 	const [loading, setLoading] = useState(false);
 	const [inputWallet, setInputWallet] = useState('');
 	const [currentWallet, setCurrentWallet] = useState('');
-	const [res, setRes]: any = useState({});
+	const [res, setRes]: any = useState();
 
 	const handleChange = (e: any) => {
 		setInputWallet(e.target.value);
