@@ -34,7 +34,7 @@ export function ChainInformation() {
         ))}
         </List>
         <List column>
-          {Object.keys(formattedNotifications).length && Object.keys(formattedNotifications).map((item: any) => (
+          {Object.keys(formattedNotifications).length > 0 && Object.keys(formattedNotifications).map((item: any) => (
             <NotificationItem key={item}>
               <BlockHeight mobile={mobileView}>
                 <Cell>{item}</Cell>
