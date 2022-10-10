@@ -70,13 +70,14 @@ export const Input = styled.input`
 
 export const SummaryContainer = styled.div`
 	padding: 30px 32px;
-	width: 40vw;
+	width: 100%;
 	min-height: 30vh;
 	height: 30vh;
 	border-radius: 16px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	word-wrap: break-word;
 	align-items: start;
 	background-color: ${({
 		theme: {
@@ -92,6 +93,7 @@ export const SummaryContainer = styled.div`
 		}) => small}) {
 		width: 100%;
 		padding: 30px 12px;
+		height: auto;
 	}
 `;
 
