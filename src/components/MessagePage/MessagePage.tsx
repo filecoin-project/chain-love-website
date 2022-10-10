@@ -64,7 +64,10 @@ export function MessagePage() {
 						) : (
 							res.result && (
 								<>
-									<Span>From: {res.result.From}</Span>
+									<SummaryTitleContainer>
+										<Span>From: {res.result.From}</Span>
+									</SummaryTitleContainer>
+
 									<Span>To: {res.result.To}</Span>
 									<Span>Method: {res.result.Method}</Span>
 									<Span>Value: {res.result.Value}</Span>

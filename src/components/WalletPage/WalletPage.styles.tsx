@@ -70,7 +70,7 @@ export const Input = styled.input`
 
 export const SummaryContainer = styled.div`
 	padding: 30px 32px;
-	width: 40vw;
+	width: 100%;
 	min-height: 13vh;
 	border-radius: 16px;
 	display: flex;
