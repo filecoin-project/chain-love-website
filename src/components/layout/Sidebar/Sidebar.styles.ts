@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 	@media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
 		min-height: 155px;
-		height: 100%;
+		height: auto;
 		max-width: none;
 	}
 `;

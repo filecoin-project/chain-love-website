@@ -9,6 +9,5 @@ export const Container = styled.div`
 
   @media screen and (max-width: ${({ theme: { breakPoints: { large } } }) => large}) {
 		flex-direction: column;
-    height: auto;
 	}
 `

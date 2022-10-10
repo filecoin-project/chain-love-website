@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 
-const url = process.env.REACT_APP_FULL_NODE_WS_URL;
+// const url = process.env.REACT_APP_FULL_NODE_WS_URL;
 function notificationReducer(
 	state: any[],
 	{ type, payload }: { type: string; payload?: any },
@@ -20,7 +20,7 @@ export function useChainNotifications() {
 
 	useEffect(() => {
 		if (!socketClient) {
-			socketClient = new WebSocket(url);
+			socketClient = new WebSocket('wss://api.chain.love/rpc/v1');
 			// Connection opened
 			socketClient.addEventListener('open', (event) => {
 				socketClient.send(
@@ -38,7 +38,10 @@ export function useChainNotifications() {
 					if (notifications.length < 20) {
 						setNotifications({
 							type: 'append',
-							payload: filteredBlocks[0].Val.Blocks,
+							payload: filteredBlocks[0].Val.Blocks.map((block: { [key: string]: any }, index: number) => ({
+								...block,
+								blockId: filteredBlocks[0].Val.Cids[index]
+							})),
 						});
 					} else {
 						setNotifications({

@@ -4,6 +4,7 @@ import { MessagePage } from './components/MessagePage/MessagePage';
 import { Section } from './components/Section/Section';
 import { Tutorial } from './components/Tutorial/Tutorial';
 import { api } from './constants/api';
+import { ChainInformation } from './containers/ChainInformation/ChainInformation';
 import { Main } from './containers/Main/Main';
 export function AppRoutes() {
 	return (
@@ -30,6 +31,7 @@ export function AppRoutes() {
 					<Route path="/api/message" element={<MessagePage />} />
 				</Route>
 				<Route path="/" element={<Navigate to="/tutorial" replace />} />
+				<Route path="/chain" element={<ChainInformation />} />
 			</Routes>
 		</HashRouter>
 	);
