@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from 'react';
+import { ChainLoveAPI } from '../api/chain.love';
 
 // const url = process.env.REACT_APP_FULL_NODE_WS_URL;
 function notificationReducer(
@@ -29,7 +30,7 @@ export function useChainNotifications() {
 			});
 
 			// Listen for messages
-			socketClient.addEventListener('message', (event) => {
+			socketClient.addEventListener('message', async (event) => {
 				const data = JSON.parse(event.data);
 				const filteredBlocks = (data.params || [])[1]?.filter(
 					(i: any) => i.Type === 'current',
@@ -38,9 +39,14 @@ export function useChainNotifications() {
 					if (notifications.length < 20) {
 						setNotifications({
 							type: 'append',
-							payload: filteredBlocks[0].Val.Blocks.map((block: { [key: string]: any }, index: number) => ({
-								...block,
-								blockId: filteredBlocks[0].Val.Cids[index]
+							payload: await Promise.all(filteredBlocks[0].Val.Blocks.map(async (block: { [key: string]: any }, index: number) => {
+								const blockId = filteredBlocks[0].Val.Cids[index]['/'];
+								const res = await ChainLoveAPI.callMethod('ChainGetBlockMessages', [{ '/': blockId }]);
+								return {
+									...block,
+									blockId,
+									numOfMessages: res?.result?.BlsMessages?.length || 0
+								}
 							})),
 						});
 					} else {

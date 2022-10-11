@@ -50,9 +50,6 @@ export const Sidebar = () => {
 						</MenuArrow>
 					)}
 				</TitleAndArrowContainer>
-				<SectionTitle to={'/chain'} type="h6" active={pathname === '/chain'}>
-					Chain Information
-				</SectionTitle>
 				{showApiList &&
 					api.map((section) => {
 						const sectionRoute = `/${section.heading}`;
@@ -91,6 +88,9 @@ export const Sidebar = () => {
 							</>
 						);
 					})}
+				<SectionTitle to={'/chain'} type="h6" active={pathname === '/chain'}>
+					Chain Information
+				</SectionTitle>
 				<SectionTitle
 					to="/api/test"
 					type="h6"

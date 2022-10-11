@@ -18,7 +18,7 @@ export function ChainInformation() {
   }, [notifications]);
 
   const headingsToDisplay = useMemo(() => {
-    if(mobileView) return ['Height', 'Block ID', 'Rewards'];
+    if(mobileView) return ['Height', 'Block ID', 'Messages'];
     return chainHeadings;
   }, [mobileView])
 
@@ -41,19 +41,15 @@ export function ChainInformation() {
               </BlockHeight>
               <BlockData>
                 {formattedNotifications[item].map((block: any) => (
-                  <BlockInformation key={block.blockId['/']}>
-                    <Cell mobile={mobileView}>{shortenString(block.blockId['/'], 4, 4)}</Cell>
-                   {!mobileView &&
-                    <>
-                      <Cell>{block.Miner}</Cell>
-                        {/* Todo: Tags */}
+                  <BlockInformation key={block?.blockId || ''}>
+                    <Cell mobile={mobileView}>{shortenString(block?.blockId, 4, 4)}</Cell>
+                    {!mobileView &&
+                      <>
+                        <Cell>{block.Miner}</Cell>
                         <Cell>--</Cell>
-                        {/* Todo: Messages */}
-                        <Cell>--</Cell>
-                    </> 
+                      </>
                     }
-                    {/* Todo: Rewards */}
-                    <Cell mobile={mobileView}>{block.Reward || '100 FIL'}</Cell>
+                    <Cell mobile={mobileView}>{block.numOfMessages}</Cell>
                   </BlockInformation>
                 ))}
               </BlockData>

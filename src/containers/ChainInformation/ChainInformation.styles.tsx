@@ -45,7 +45,7 @@ export const Heading = styled(Span)`
 
 export const Cell = styled(Span)<{empty?: boolean, mobile?: boolean}>`
   font-size: 20px;
-  width: 20%;
+  width: 25%;
   display: inline-block;
 
   ${({empty}) => empty && `
@@ -67,7 +67,7 @@ export const NotificationItem = styled.li`
 `;
 
 export const BlockHeight = styled.div<{mobile?: boolean}>`
-  width: 20%;
+  width: 25%;
   display: flex;
   align-items: center;
 

@@ -1,1 +1,1 @@
-export const chainHeadings = ['Height', 'Block ID', 'Miner', 'Tag', 'Messages', 'Reward'];
+export const chainHeadings = ['Height', 'Block ID', 'Miner', 'Tag', 'Messages'];
