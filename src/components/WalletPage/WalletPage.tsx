@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ChainLoveAPI } from '../../api/chain.love';
 import { Button } from '../common/Button/Button';
 import { HorizontalLine } from '../common/HorizontalLine/HorizontalLine';
@@ -15,6 +16,8 @@ import {
 } from './WalletPage.styles';
 
 export function WalletPage() {
+	const { state }: any = useLocation();
+
 	const [loading, setLoading] = useState(false);
 	const [inputWallet, setInputWallet] = useState('');
 	const [currentWallet, setCurrentWallet] = useState('');
@@ -33,6 +36,17 @@ export function WalletPage() {
 			setRes(data);
 		});
 	};
+
+	useEffect(() => {
+		if (state) {
+			setCurrentWallet(state.id);
+			setLoading(true);
+			ChainLoveAPI.callMethod('WalletBalance', [state.id]).then((data) => {
+				setLoading(false);
+				setRes(data);
+			});
+		}
+	}, [state]);
 
 	return (
 		<MainContainer>
