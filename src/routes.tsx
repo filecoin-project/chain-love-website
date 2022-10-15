@@ -24,8 +24,8 @@ export function AppRoutes() {
 				<Route path="/tutorial" element={<Main />}>
 					<Route path="/tutorial" element={<Tutorial />} />
 				</Route>
-				<Route path="/api/test" element={<Main />}>
-					<Route path="/api/test" element={<WalletPage />} />
+				<Route path="/api/wallet" element={<Main />}>
+					<Route path="/api/wallet" element={<WalletPage />} />
 				</Route>
 				<Route path="/api/message" element={<Main />}>
 					<Route path="/api/message" element={<MessagePage />} />

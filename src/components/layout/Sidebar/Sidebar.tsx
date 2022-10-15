@@ -92,9 +92,9 @@ export const Sidebar = () => {
 					Chain Information
 				</SectionTitle>
 				<SectionTitle
-					to="/api/test"
+					to="/api/wallet"
 					type="h6"
-					active={pathname === '/api/test'}
+					active={pathname === '/api/wallet'}
 				>
 					Wallet Info
 				</SectionTitle>

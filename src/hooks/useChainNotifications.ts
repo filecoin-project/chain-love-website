@@ -39,15 +39,23 @@ export function useChainNotifications() {
 					if (notifications.length < 20) {
 						setNotifications({
 							type: 'append',
-							payload: await Promise.all(filteredBlocks[0].Val.Blocks.map(async (block: { [key: string]: any }, index: number) => {
-								const blockId = filteredBlocks[0].Val.Cids[index]['/'];
-								const res = await ChainLoveAPI.callMethod('ChainGetBlockMessages', [{ '/': blockId }]);
-								return {
-									...block,
-									blockId,
-									numOfMessages: res?.result?.BlsMessages?.length || 0
-								}
-							})),
+							payload: await Promise.all(
+								filteredBlocks[0].Val.Blocks.map(
+									async (block: { [key: string]: any }, index: number) => {
+										const blockId = filteredBlocks[0].Val.Cids[index]['/'];
+										const res = await ChainLoveAPI.callMethod(
+											'ChainGetBlockMessages',
+											[{ '/': blockId }],
+										);
+										return {
+											...block,
+											blockId,
+											numOfMessages: res?.result?.BlsMessages?.length || 0,
+											messages: res?.result?.BlsMessages || [],
+										};
+									},
+								),
+							),
 						});
 					} else {
 						setNotifications({
