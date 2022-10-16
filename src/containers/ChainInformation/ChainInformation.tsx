@@ -18,7 +18,6 @@ import {
 	BlockInformation,
 	BlockHeight,
 	BlockData,
-	ModalContainer,
 } from './ChainInformation.styles';
 import { chainHeadings } from './constant';
 
@@ -51,31 +50,29 @@ export function ChainInformation() {
 					isOpen={isModalOpen}
 					title={`Block ID: ${selectedBlock?.blockId}`}
 				>
-					<ModalContainer>
-						<List>
-							<ModalListItem fullWidth={mobileView}>
-								<Heading>Messages</Heading>
-							</ModalListItem>
-						</List>
-						<List column>
-							{selectedBlock?.messages?.map((item: any) => {
-								return (
-									<ModalListItem>
-										<Cell
-											cursor
-											onClick={() =>
-												navigate('/api/message', {
-													state: { id: item.CID['/'] },
-												})
-											}
-										>
-											{item.CID['/']}
-										</Cell>
-									</ModalListItem>
-								);
-							})}
-						</List>
-					</ModalContainer>
+					<List>
+						<ModalListItem fullWidth={mobileView}>
+							<Heading>Messages</Heading>
+						</ModalListItem>
+					</List>
+					<List column>
+						{selectedBlock?.messages?.map((item: any) => {
+							return (
+								<ModalListItem>
+									<Cell
+										cursor
+										onClick={() =>
+											navigate('/api/message', {
+												state: { id: item.CID['/'] },
+											})
+										}
+									>
+										{item.CID['/']}
+									</Cell>
+								</ModalListItem>
+							);
+						})}
+					</List>
 				</Modal>
 				<List>
 					{headingsToDisplay.map((item: string) => (
