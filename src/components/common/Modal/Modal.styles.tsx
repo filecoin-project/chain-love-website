@@ -17,6 +17,7 @@ export const ModalListItem = styled.li<{ fullWidth?: boolean }>`
 	text-decoration: none;
 	display: flex;
 	justify-content: space-between;
+
 	margin-bottom: 15px;
 	border-bottom: 1px solid rgba(148, 151, 155, 0.2);
 	padding: 10px 0px;
@@ -39,8 +40,8 @@ export const ModalContainer = styled.div`
 		},
 	}) => sidebar};
 	margin: 20% auto;
-	width: 1000px;
-	height: 600px;
+	width: 900px;
+	height: 400px;
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
@@ -51,7 +52,15 @@ export const ModalContainer = styled.div`
 export const ModalHeader = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	padding: 10px;
+	position: sticky;
+	background-color: ${({
+		theme: {
+			colors: {
+				background: { sidebar },
+			},
+		},
+	}) => sidebar};
 `;
 export const ModalClose = styled.span`
 	font-size: 30px;
