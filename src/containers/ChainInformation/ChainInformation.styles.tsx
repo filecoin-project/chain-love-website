@@ -61,6 +61,7 @@ export const Cell = styled(Span)<{
 	empty?: boolean;
 	mobile?: boolean;
 	cursor?: boolean;
+	title?: string;
 }>`
 	font-size: 20px;
 	width: 25%;

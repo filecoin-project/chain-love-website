@@ -1,9 +1,9 @@
 import { SpanComponent } from './Span.styles';
 import { TypographyProps } from '../types';
 
-export function Span({ children, className, onClick }: TypographyProps) {
+export function Span({ children, className, onClick, title }: TypographyProps) {
 	return (
-		<SpanComponent className={className} onClick={onClick}>
+		<SpanComponent title={title} className={className} onClick={onClick}>
 			{children}
 		</SpanComponent>
 	);

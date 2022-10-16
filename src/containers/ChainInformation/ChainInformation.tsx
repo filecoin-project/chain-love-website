@@ -47,7 +47,11 @@ export function ChainInformation() {
 						setIsModalOpen(false);
 					}}
 					isOpen={isModalOpen}
-					title={`Block ID: ${selectedBlock?.blockId}`}
+					title={`Block ID: ${
+						mobileView
+							? shortenString(selectedBlock?.blockId, 8, 8)
+							: selectedBlock?.blockId
+					}`}
 				>
 					<List>
 						<ModalListItem fullWidth={mobileView}>
@@ -66,7 +70,9 @@ export function ChainInformation() {
 											})
 										}
 									>
-										{item.CID['/']}
+										{mobileView
+											? shortenString(item.CID['/'], 10, 10)
+											: item.CID['/']}
 									</Cell>
 								</ModalListItem>
 							);
@@ -99,6 +105,7 @@ export function ChainInformation() {
 													setIsModalOpen(true);
 													setSelectedBlock(block);
 												}}
+												title={block?.blockId}
 											>
 												{shortenString(block?.blockId, 4, 4)}
 											</Cell>

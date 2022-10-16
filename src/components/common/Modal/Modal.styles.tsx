@@ -39,15 +39,25 @@ export const ModalContainer = styled.div`
 			},
 		},
 	}) => sidebar};
-	margin: 15% auto;
+	margin: 8% auto;
 	width: 900px;
-	height: 400px;
+	height: 36rem;
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
 	align-items: center;
 	gap: 32px;
 	overflow-y: auto;
+	@media screen and (max-width: ${({
+			theme: {
+				breakPoints: { medium },
+			},
+		}) => medium}) {
+		width: 90%;
+		height: 60%;
+		margin: auto auto;
+		padding: 20px;
+	}
 `;
 export const ModalHeader = styled.div`
 	display: flex;
