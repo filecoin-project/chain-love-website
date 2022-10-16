@@ -39,7 +39,7 @@ export const ModalContainer = styled.div`
 			},
 		},
 	}) => sidebar};
-	margin: 20% auto;
+	margin: 15% auto;
 	width: 900px;
 	height: 400px;
 	display: flex;
@@ -83,6 +83,9 @@ export const ModalTitle = styled.span`
 `;
 export const ModalContent = styled.div`
 	display: flex;
-	align-items: flex-end;
-	width: 80%;
+	align-items: center;
+	flex-direction: column;
+	width: 90%;
+	overflow-y: auto;
+	padding: 10px;
 `;
