@@ -6,7 +6,6 @@ function notificationReducer(
 	state: any[],
 	{ type, payload }: { type: string; payload?: any },
 ) {
-	console.log(`state before ${type}`, { state });
 	switch (type) {
 		case 'reset':
 			return payload || [];
@@ -19,7 +18,6 @@ function notificationReducer(
 			const filteredNotifications = state.filter((i) => {
 				return !cidsToFilter.includes(i.blockId);
 			});
-			console.log(`state after revert`, { state });
 			return filteredNotifications;
 	}
 }
@@ -45,22 +43,26 @@ export function useChainNotifications() {
 	const [notifications, setNotifications] = useReducer(notificationReducer, []);
 
 	useEffect(() => {
-		if (!socketClient) {
-			socketClient = new WebSocket('wss://api.chain.love/rpc/v1');
-			// Connection opened
-			socketClient.addEventListener('open', (event) => {
-				socketClient.send(
-					'{ "jsonrpc": "2.0", "id":1, "method": "Filecoin.ChainNotify", "params": [ ] }',
-				);
-			});
+		if (socketClient) {
+			socketClient.close();
+		}
+		socketClient = new WebSocket('wss://api.chain.love/rpc/v1');
+		// Connection opened
+		socketClient.addEventListener('open', (event) => {
+			socketClient.send(
+				'{ "jsonrpc": "2.0", "id":1, "method": "Filecoin.ChainNotify", "params": [ ] }',
+			);
+		});
 
-			// Listen for messages
-			socketClient.addEventListener('message', async (event) => {
-				const data = JSON.parse(event.data);
-				const paramsByType: {
-					[key: string]: { Blocks: any[]; Cids: any[]; Height: number };
-				} = {};
-				for (const param of data.params?.flat()) {
+		// Listen for messages
+		socketClient.addEventListener('message', async (event) => {
+			const data = JSON.parse(event.data);
+			const paramsByType: {
+				[key: string]: { Blocks: any[]; Cids: any[]; Height: number };
+			} = {};
+			const paramsArray = data?.params?.flat();
+			if (paramsArray) {
+				for (const param of paramsArray) {
 					const type: string = param?.Type;
 					if (type) {
 						paramsByType[type] = param.Val;
@@ -78,7 +80,6 @@ export function useChainNotifications() {
 							payload: await formatBlocks(paramsByType['apply']),
 						});
 					}
-
 					if (paramsByType['revert']?.Blocks?.length) {
 						setNotifications({
 							type: 'revert',
@@ -86,8 +87,8 @@ export function useChainNotifications() {
 						});
 					}
 				}
-			});
-		}
+			}
+		});
 	}, []);
 
 	return notifications;

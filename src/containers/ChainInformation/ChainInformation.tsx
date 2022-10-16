@@ -29,7 +29,6 @@ export function ChainInformation() {
 	const [selectedBlock, setSelectedBlock]: any = useState({});
 
 	const formattedNotifications = useMemo(() => {
-		console.log({ notifications });
 		if (notifications.length) return groupBy(notifications, 'Height');
 		return [];
 	}, [notifications]);
@@ -81,16 +80,18 @@ export function ChainInformation() {
 						</ListItem>
 					))}
 				</List>
+				<br />
+				<br />
 				<List column>
 					{Object.keys(formattedNotifications).length > 0 &&
-						Object.keys(formattedNotifications).map((item: any) => (
-							<NotificationItem key={item}>
+						Object.keys(formattedNotifications).map((item: any, i: number) => (
+							<NotificationItem key={i + item}>
 								<BlockHeight mobile={mobileView}>
 									<Cell>{item}</Cell>
 								</BlockHeight>
 								<BlockData>
-									{formattedNotifications[item].map((block: any) => (
-										<BlockInformation key={block?.blockId || ''}>
+									{formattedNotifications[item].map((block: any, i: number) => (
+										<BlockInformation key={i + (block?.blockId || '')}>
 											<Cell
 												cursor
 												mobile={mobileView}
@@ -122,6 +123,9 @@ export function ChainInformation() {
 								</BlockData>
 							</NotificationItem>
 						))}
+					{!(Object.keys(formattedNotifications).length > 0) && (
+						<Heading>Loading chain information...</Heading>
+					)}
 				</List>
 			</Container>
 		</Wrapper>
