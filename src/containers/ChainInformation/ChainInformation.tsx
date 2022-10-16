@@ -30,6 +30,7 @@ export function ChainInformation() {
 	const [selectedBlock, setSelectedBlock]: any = useState({});
 
 	const formattedNotifications = useMemo(() => {
+		console.log({ notifications });
 		if (notifications.length) return groupBy(notifications, 'Height');
 		return [];
 	}, [notifications]);
