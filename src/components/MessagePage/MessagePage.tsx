@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ChainLoveAPI } from '../../api/chain.love';
 import { Button } from '../common/Button/Button';
 import { HorizontalLine } from '../common/HorizontalLine/HorizontalLine';
@@ -15,6 +16,7 @@ import {
 } from './MessagePage.styles';
 
 export function MessagePage() {
+	const { state }: any = useLocation();
 	const [loading, setLoading] = useState(false);
 	const [inputMessage, setInputMessage] = useState('');
 	const [currentMessage, setCurrentMessage] = useState('');
@@ -35,6 +37,19 @@ export function MessagePage() {
 			},
 		);
 	};
+
+	useEffect(() => {
+		if (state) {
+			setCurrentMessage(state.id);
+			setLoading(true);
+			ChainLoveAPI.callMethod('ChainGetMessage', [{ '/': state.id }]).then(
+				(data) => {
+					setLoading(false);
+					setRes(data);
+				},
+			);
+		}
+	}, [state]);
 
 	return (
 		<MainContainer>

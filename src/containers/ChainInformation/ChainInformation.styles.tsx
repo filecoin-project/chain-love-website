@@ -76,6 +76,9 @@ export const Cell = styled(Span)<{
 		cursor &&
 		`
     cursor: pointer;
+    &:hover {
+      color: #ea4cce
+    }
   `};
 
 	${({ mobile }) =>

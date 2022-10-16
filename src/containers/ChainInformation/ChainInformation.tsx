@@ -49,29 +49,28 @@ export function ChainInformation() {
 						setIsModalOpen(false);
 					}}
 					isOpen={isModalOpen}
-					title={`Block ID: ${shortenString(selectedBlock?.blockId, 4, 4)}`}
+					title={`Block ID: ${selectedBlock?.blockId}`}
 				>
 					<ModalContainer>
 						<List>
 							<ModalListItem fullWidth={mobileView}>
 								<Heading>Messages</Heading>
-								<Heading>From</Heading>
-								<Heading>To</Heading>
-								<Heading>Method</Heading>
-								<Heading>Value</Heading>
-								<Heading>Gas Limit</Heading>
 							</ModalListItem>
 						</List>
 						<List column>
 							{selectedBlock?.messages?.map((item: any) => {
 								return (
 									<ModalListItem>
-										<Cell>{shortenString(item.CID['/'], 4, 4)}</Cell>
-										<Cell>{shortenString(item.From, 4, 4)}</Cell>
-										<Cell>{item.To}</Cell>
-										<Cell>{item.Method}</Cell>
-										<Cell>{shortenString(item.Value.toString(), 4, 4)}</Cell>
-										<Cell>{shortenString(item.GasLimit.toString(), 4, 4)}</Cell>
+										<Cell
+											cursor
+											onClick={() =>
+												navigate('/api/message', {
+													state: { id: item.CID['/'] },
+												})
+											}
+										>
+											{item.CID['/']}
+										</Cell>
 									</ModalListItem>
 								);
 							})}
