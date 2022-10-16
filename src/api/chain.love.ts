@@ -26,7 +26,6 @@ export class ChainLoveAPI {
 				},
 			},
 		);
-		console.log({ data });
 		return data;
 	}
 }
