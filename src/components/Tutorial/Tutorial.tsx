@@ -76,12 +76,6 @@ export function Tutorial() {
 					Let’s see how it looks to use api.chain.love with a lotus daemon
 					running with the lite flag.
 				</Description>
-				<Link
-					href="https://asciinema.org/connect/9bbc0156-97b5-43bb-98d7-bfb724801749"
-					target="_blank"
-				>
-					https://asciinema.org/connect/9bbc0156-97b5-43bb-98d7-bfb724801749
-				</Link>
 				<HighlightedCode>
 					export FULLNODE_API_INFO=/dns/api.chain.love/wss
 				</HighlightedCode>
