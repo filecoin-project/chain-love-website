@@ -19,11 +19,7 @@ export class ChainLoveAPI {
 				: `${process.env.REACT_APP_GATEWAY_API_URL}`,
 			this.getJSONRPCBody(method, params),
 			{
-				headers: {
-					Accept: '*/*',
-					'Access-Control-Allow-Origin': '*',
-					'Content-type': 'application/json',
-				},
+				headers: {},
 			},
 		);
 		return data;
