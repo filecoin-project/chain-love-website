@@ -16,7 +16,7 @@ export class ChainLoveAPI {
 		const { data } = await axios.post(
 			API_TYPE === 'fullnode'
 				? `${process.env.REACT_APP_FULL_NODE_API_URL}`
-				: `tmp-gateway.chain.love`,
+				: `https://tmp-gateway.chain.love`,
 				// : `${process.env.REACT_APP_GATEWAY_API_URL}`,
 			this.getJSONRPCBody(method, params),
 			{
