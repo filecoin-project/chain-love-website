@@ -15,8 +15,8 @@ export class ChainLoveAPI {
 	public static async callMethod(method: string, params: any) {
 		const { data } = await axios.post(
 			API_TYPE === 'fullnode'
-				? `https://cors-enable.herokuapp.com/${process.env.REACT_APP_FULL_NODE_API_URL}`
-				: `https://cors-enable.herokuapp.com/${process.env.REACT_APP_GATEWAY_API_URL}`,
+				? `${process.env.REACT_APP_FULL_NODE_API_URL}`
+				: `${process.env.REACT_APP_GATEWAY_API_URL}`,
 			this.getJSONRPCBody(method, params),
 			{
 				headers: {
